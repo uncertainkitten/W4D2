@@ -1,0 +1,53 @@
+<% if action == :new%>
+  <% action_url = cats_url%>
+  <% button_val = "Make new cat!!" %>
+<% elsif action == :edit%>
+  <% action_url = cat_url%>
+  <% button_val = "Change your cat!!"%>
+<% end %>
+
+<form action="<%= action_url%>" method="post">
+  <% if Cat.exists?(@cat.id) %>
+    <input type="hidden" name="_method" value="patch">
+  <%end%>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Name:
+    <input type="text" name="cats[name]" value ="<%=cat.name%>">
+  </label>
+  <br>
+
+  <label>Sex:
+    <input type="radio" name="cats[sex]" value="M" <%= cat.sex == "M" ? "checked" : "" %>>Male
+    <input type="radio" name="cats[sex]" value="F" <%= cat.sex == "F" ? "checked" : "" %>>Female
+    <input type="radio" name="cats[sex]" value="X" <%= cat.sex == "X" ? "checked" : "" %>>Unspecified
+  </label>
+  <br>
+
+  <label>Color:
+    <select name="cats[color]">
+      <option value="" disabled>-- Please select a color --</option>
+      <option value="white" <%= cat.color == "white" ? "selected" : ""%>>White</option>
+      <option value="black" <%= cat.color == "black" ? "selected" : "" %>>Black</option>
+      <option value="purple" <%= cat.color == "purple" ? "selected" : ""%>>Purple</option>
+      <option value="grey" <%= cat.color == "grey" ? "selected" : "" %>>Grey</option>
+      <option value="calico" <%= cat.color == "calico" ? "selected" : "" %>>Calico</option>
+      <option value="brown" <%= cat.color == "brown" ? "selected" : "" %>>Brown</option>
+      <option value="orange" <%= cat.color == "orange" ? "selected" : "" %>>Orange</option>
+    </select>
+  </label>
+  <br>
+
+  <label>Birth Date:
+    <input type="date" name="cats[birth_date]" value="<%= cat.birth_date %>">
+  </label>
+  <br>
+
+  <label>Description:
+    <input type="textarea" name="cats[description]" value="<%= cat.description %>">
+  </label>
+  <br>
+
+  <input type="submit" value="<%= button_val%>">
+
+</form>

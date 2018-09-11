@@ -4,6 +4,11 @@ class Cat < ApplicationRecord
     message: "We don't have a cat that color"}
   validates :sex, inclusion: { in: %w(M F X), message: "Input not valid"}
 
+  has_many :rental_requests,
+    foreign_id: :cat_id,
+    class_name: :CatRentalRequest,
+    dependent: :destroy
+
   include ActionView::Helpers::DateHelper
 
   def age
