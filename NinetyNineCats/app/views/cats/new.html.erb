@@ -1,0 +1,46 @@
+<form action="<%= cats_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Name:
+    <input type="text" name="cats[name]" value ="">
+  </label>
+  <br>
+
+  <label>Sex:
+    <!-- <br> -->
+    <input type="radio" name="cats[sex]" value="M">Male
+    <!-- <br> -->
+    <input type="radio" name="cats[sex]" value="F">Female
+    <!-- <br> -->
+    <input type="radio" name="cats[sex]" value="X">Unspecified
+    <!-- <br> -->
+  </label>
+  <br>
+
+  <label>Color:
+    <select name="cats[color]">
+      <option value="" disabled selected>-- Please select a color --</option>
+      <option value="white">White</option>
+      <option value="black">Black</option>
+      <option value="purple">Purple</option>
+      <option value="grey">Grey</option>
+      <option value="calico">Calico</option>
+      <option value="brown">Brown</option>
+      <option value="orange">Orange</option>
+    </select>
+  </label>
+  <br>
+
+  <label>Birth Date:
+    <input type="date" name="cats[birth_date]" value="">
+  </label>
+  <br>
+
+  <label>Description:
+    <input type="textarea" name="cats[description]" value ="">
+  </label>
+  <br>
+
+  <input type="submit" value="New cat!!">
+
+</form>
