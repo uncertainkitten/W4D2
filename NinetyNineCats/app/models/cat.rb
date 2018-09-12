@@ -5,7 +5,7 @@ class Cat < ApplicationRecord
   validates :sex, inclusion: { in: %w(M F X), message: "Input not valid"}
 
   has_many :rental_requests,
-    foreign_id: :cat_id,
+    foreign_key: :cat_id,
     class_name: :CatRentalRequest,
     dependent: :destroy
 
